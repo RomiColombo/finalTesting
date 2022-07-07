@@ -50,7 +50,7 @@ public class TestFront {
         //Registry
         Registry registry = new Registry();
         registry.goToRegister();
-        registry.doRegister("El", "Firulais", "Mi casa 123","Beverly Hills", "California", "90210", "123456", "123", "estaeslaqueva", "12345", "12345");
+        registry.doRegister("El", "Firulais", "Mi casa 123","Beverly Hills", "California", "90210", "123456", "123", "elFirulais", "12345", "12345");
         registry.sendCredentials();
         String result = registry.confirmRegistry();
 
