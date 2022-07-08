@@ -24,8 +24,6 @@ public class TestFront {
     private String successMsgAccountSummary = "Balance includes deposits that may be subject to holds";
     private String titleTransfer = "Transfer Funds";
     private String successMsgTransfer = "Transfer Complete!";
-    private String titleAccountActivity = "Account Details";
-
 
     @BeforeAll
     static void setUp(){
