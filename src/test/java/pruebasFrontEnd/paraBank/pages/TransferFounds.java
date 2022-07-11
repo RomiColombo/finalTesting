@@ -18,6 +18,7 @@ public class TransferFounds extends BasePage {
     protected static final String fromAccount = "fromAccountId";
     protected static final String originAccount = "//*[@id=\"toAccountId\"]/option[1]";
     protected static final String toAccount = "toAccountId";
+    //ESTE TAMPOCO ENCUENTRA
     protected static final String accountToTransfer = "//*[@id=\"toAccountId\"]/option[2]";
 
     protected static final String btnTransfer = "//*[@id=\"rightPanel\"]/div/div/form/div[2]/input";

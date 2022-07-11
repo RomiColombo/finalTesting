@@ -17,6 +17,7 @@ public class NewAccount extends BasePage {
     private static final String accountOptions = "//*[@id=\"type\"]";
     private static final String accountType = "//*[@id=\"type\"]/option[2]";
     private static final String btnCreate = "//*[@id=\"rightPanel\"]/div/div/form/div/input";
+    //este no encuentra
     public static final String success = "//*[@id=\"rightPanel\"]/div/div/p[1]";
 
 

@@ -4,12 +4,10 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.BeforeTest;
 import pruebasFrontEnd.base.BasePage;
 import pruebasFrontEnd.extentReports.ExtentFactory;
 import pruebasFrontEnd.paraBank.pages.*;
 
-import javax.swing.text.StyledEditorKit;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestFront {
@@ -25,6 +23,9 @@ public class TestFront {
     private String titleTransfer = "Transfer Funds";
     private String successMsgTransfer = "Transfer Complete!";
 
+    private String userName = "romicolombo";
+    private String password = "12345";
+
     @BeforeAll
     static void setUp(){
         basePage = new BasePage();
@@ -38,28 +39,38 @@ public class TestFront {
         basePage.openApp();
     }
 
-
-
     @Order(1)
     @Test
+    @Tag("Smoke")
     @DisplayName("Proceso de registro")
     public void testRegistry() {
 
-        //Registry
         Registry registry = new Registry();
         registry.goToRegister();
-        registry.doRegister("El", "Firulais", "Mi casa 123","Beverly Hills", "California", "90210", "123456", "123", "elFirulais", "12345", "12345");
+        registry.doRegister("Romina", "Colombo", "Mi casa 123","Corrientes", "Argentina", "3400", "123456", "123", "romicolombo", "12345", "12345");
         registry.sendCredentials();
         String result = registry.confirmRegistry();
 
         Boolean confirm = result.contains(successMsgAccount);
+        Assertions.assertEquals(true, confirm);
         System.out.println("Test pass: " + confirm);
-
-    //AGREGAR LAS SUITES POR TIPO DE TEST
     }
 
     @Order(2)
     @Test
+    @Tag("Regression")
+    @DisplayName("Proceso de login")
+    public void testLogin(){
+        Login login = new Login();
+        login.login(userName, password);
+        String result = login.confirmLogin();
+        Boolean confirm = result.contains(successMsgAccount);
+        System.out.println("Test pass: " + confirm );
+    }
+
+    @Order(3)
+    @Test
+    @Tag("Regression")
     @DisplayName("Apertura de una nueva cuenta")
     public void testNewAccount() {
         NewAccount newAccount = new NewAccount();
@@ -74,7 +85,8 @@ public class TestFront {
     }
 
     @Test
-    @Order(3)
+    @Order(4)
+    @Tag("Regression")
     @DisplayName("Visión general de la cuenta")
     public void testAccountSummary() {
 
@@ -88,7 +100,8 @@ public class TestFront {
     }
 
     @Test
-    @Order(4)
+    @Order(5)
+    @Tag("Regression")
     @DisplayName("Transferencia de fondos")
     public void testTransferFounds() {
 
@@ -108,7 +121,8 @@ public class TestFront {
     }
 
     @Test
-    @Order(5)
+    @Order(6)
+    @Tag("Regression")
     @DisplayName("Actividad de la cuenta")
     public void testAccountActivity() {
 
@@ -119,13 +133,9 @@ public class TestFront {
         accountActivity.checkActivity();
     }
 
-
     @AfterAll
     static void tearDown(){
         extentReports.flush();
         webDriver.quit();
     }
-
-
-
 }
